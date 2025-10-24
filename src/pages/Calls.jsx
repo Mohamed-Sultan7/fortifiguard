@@ -309,17 +309,13 @@ const Calls = () => {
                       <MessageSquare className="h-5 w-5 text-primary-600 dark:text-primary-400 mt-0.5" />
                       <div className="flex-1">
                         <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                          "Hello, you've reached my protected voicemail service. I'm not available to take your call right now, but your message is important to me. Please leave your name, number, and a brief message, and I'll get back to you as soon as possible. Thank you for calling!"
+                          "This number is not accepting calls at the moment. Please contact us by mail at the mailing address on file. Thank you."
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                <button className="w-full flex items-center justify-center space-x-2 bg-primary-600 dark:bg-primary-500 hover:bg-primary-700 dark:hover:bg-primary-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                  <Play className="h-4 w-4" />
-                  <span>Play Voicemail Message (Mock)</span>
-                </button>
               </div>
             </div>
           </div>

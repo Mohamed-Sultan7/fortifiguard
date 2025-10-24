@@ -4,7 +4,7 @@ import { userData, invoices } from '../data/mockData';
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState('protected-services');
-  const [voicemailMessage, setVoicemailMessage] = useState("Hello, you've reached my protected voicemail service. I'm not available to take your call right now, but your message is important to me. Please leave your name, number, and a brief message, and I'll get back to you as soon as possible. Thank you for calling!");
+  const [voicemailMessage, setVoicemailMessage] = useState("This number is not accepting calls at the moment. Please contact us by mail at the mailing address on file. Thank you.");
 
   const tabs = [
     { id: 'protected-services', name: 'Protected Services', icon: Phone },
@@ -81,8 +81,10 @@ const Settings = () => {
               <textarea
                 value={voicemailMessage}
                 onChange={(e) => setVoicemailMessage(e.target.value)}
+                readOnly
+                disabled
                 rows={4}
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white resize-none"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white resize-none opacity-70"
                 placeholder="Enter your automated voicemail message..."
               />
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
@@ -127,13 +129,6 @@ const Settings = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Save Button */}
-          <div className="flex justify-end">
-            <button className="btn-primary">
-              Save Protected Services Settings
-            </button>
           </div>
         </div>
       )}

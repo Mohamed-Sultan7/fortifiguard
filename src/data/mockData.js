@@ -80,7 +80,6 @@ export const recentMail = [
     subject: "Final Notice - Account #12345",
     date: "2025-01-15",
     status: "unread",
-    type: "Debt Collection",
     preview: "This is a final notice regarding your outstanding balance...",
     important: false
   },
@@ -90,7 +89,6 @@ export const recentMail = [
     subject: "Payment Required - Immediate Action",
     date: "2025-01-14",
     status: "read",
-    type: "Debt Collection",
     preview: "Your account requires immediate attention. Please contact us...",
     important: true
   },
@@ -100,7 +98,6 @@ export const recentMail = [
     subject: "Settlement Offer - Limited Time",
     date: "2025-01-13",
     status: "read",
-    type: "Debt Collection",
     preview: "We are prepared to offer you a settlement option...",
     important: false
   },
@@ -110,7 +107,6 @@ export const recentMail = [
     subject: "Legal Action Notice",
     date: "2025-01-12",
     status: "unread",
-    type: "Legal Notice",
     preview: "Please be advised that legal proceedings may commence...",
     important: true
   },
@@ -120,7 +116,6 @@ export const recentMail = [
     subject: "Account Verification Required",
     date: "2025-01-11",
     status: "read",
-    type: "Verification",
     preview: "We need to verify your current contact information...",
     important: false
   }
@@ -168,7 +163,6 @@ export const allMail = [
     subject: "Account Status Update",
     date: "2025-01-10",
     status: "read",
-    type: "Account Update",
     preview: "Your account status has been updated. Please review...",
     important: false
   },
@@ -178,7 +172,6 @@ export const allMail = [
     subject: "Payment Plan Options",
     date: "2025-01-09",
     status: "unread",
-    type: "Payment Plan",
     preview: "We offer flexible payment plan options for your account...",
     important: false
   },
@@ -188,7 +181,6 @@ export const allMail = [
     subject: "Dispute Resolution",
     date: "2025-01-08",
     status: "read",
-    type: "Dispute",
     preview: "Regarding your recent dispute claim, we have reviewed...",
     important: false
   }

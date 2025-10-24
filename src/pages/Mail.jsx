@@ -5,14 +5,12 @@ import { allMail } from '../data/mockData';
 const MailPage = () => {
   const [selectedMail, setSelectedMail] = useState(null);
   const [filterStatus, setFilterStatus] = useState('all');
-  const [filterType, setFilterType] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  // Filter mail based on status and type
+  // Filter mail based on status only
   const filteredMail = allMail.filter(mail => {
     if (filterStatus !== 'all' && mail.status !== filterStatus) return false;
-    if (filterType !== 'all' && mail.type !== filterType) return false;
     return true;
   });
 
@@ -25,18 +23,6 @@ const MailPage = () => {
     return status === 'unread' 
       ? 'bg-blue-100 text-blue-800' 
       : 'bg-gray-100 text-gray-800';
-  };
-
-  const getTypeColor = (type) => {
-    const colors = {
-      'Debt Collection': 'bg-red-100 text-red-800',
-      'Legal Notice': 'bg-orange-100 text-orange-800',
-      'Verification': 'bg-yellow-100 text-yellow-800',
-      'Account Update': 'bg-blue-100 text-blue-800',
-      'Payment Plan': 'bg-green-100 text-green-800',
-      'Dispute': 'bg-purple-100 text-purple-800'
-    };
-    return colors[type] || 'bg-gray-100 text-gray-800';
   };
 
   return (
@@ -81,19 +67,6 @@ const MailPage = () => {
               <option value="unread">Unread</option>
               <option value="read">Read</option>
             </select>
-            <select
-              value={filterType}
-              onChange={(e) => setFilterType(e.target.value)}
-              className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
-            >
-              <option value="all">All Types</option>
-              <option value="Debt Collection">Debt Collection</option>
-              <option value="Legal Notice">Legal Notice</option>
-              <option value="Verification">Verification</option>
-              <option value="Account Update">Account Update</option>
-              <option value="Payment Plan">Payment Plan</option>
-              <option value="Dispute">Dispute</option>
-            </select>
           </div>
           <div className="flex items-center space-x-2">
             <Calendar className="h-4 w-4 text-gray-500" />
@@ -132,9 +105,6 @@ const MailPage = () => {
                   Sender & Subject
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Type
-                </th>
-                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   Date
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -162,11 +132,6 @@ const MailPage = () => {
                         <div className="text-sm text-gray-500 dark:text-gray-400 truncate max-w-xs">{mail.subject}</div>
                       </div>
                     </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getTypeColor(mail.type)}`}>
-                      {mail.type}
-                    </span>
                   </td>
                   <td className="px-6 py-4">
                     <div className="text-sm text-gray-900 dark:text-white">{mail.date}</div>
@@ -251,11 +216,8 @@ const MailPage = () => {
                 </div>
                 {/* Tags */}
                 <div className="flex items-center space-x-2 mt-2">
-                  <Tag className="h-4 w-4 text-gray-400" />
+                  
                   <div className="flex space-x-1">
-                    <span className="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                      {selectedMail.type}
-                    </span>
                     {selectedMail.important && (
                       <span className="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
                         Important
@@ -307,9 +269,6 @@ const MailPage = () => {
             <div className="p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  <span className={`inline-flex px-3 py-1 text-sm font-medium rounded-full ${getTypeColor(selectedMail.type)}`}>
-                    {selectedMail.type}
-                  </span>
                   <span className="text-sm text-gray-600 dark:text-gray-400">Scanned: {selectedMail.date}</span>
                 </div>
                 <div className="flex items-center space-x-2">
