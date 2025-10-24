@@ -332,7 +332,7 @@ const Dashboard = () => {
                     {userData.assignedPhone}
                   </p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Redirecting calls since March 2024
+                    Redirecting calls since March 2025
                   </p>
                 </div>
               </div>
@@ -356,7 +356,7 @@ const Dashboard = () => {
                     {userData.assignedAddress.city}, {userData.assignedAddress.state} {userData.assignedAddress.zipCode}
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
-                    Scanning mail since March 2024
+                    Scanning mail since March 2025
                   </p>
                 </div>
               </div>
