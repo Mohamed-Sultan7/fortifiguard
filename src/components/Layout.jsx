@@ -19,6 +19,7 @@ import {
   HelpCircle
 } from 'lucide-react';
 import { userData, recentCalls, recentMail, stats } from '../data/mockData';
+import MobileBottomNav from './MobileBottomNav';
 
 const Layout = () => {
   const location = useLocation();
@@ -230,12 +231,15 @@ const Layout = () => {
         </header>
 
         {/* Page Content */}
-        <main className="p-4 lg:p-6 min-h-screen">
+        <main className="p-4 lg:p-6 min-h-screen pb-20 lg:pb-6">
           <div className="max-w-7xl mx-auto">
             <Outlet />
           </div>
         </main>
       </div>
+
+      {/* Mobile Bottom Navigation */}
+      <MobileBottomNav />
 
       {/* Click outside to close user menu */}
       {userMenuOpen && (
