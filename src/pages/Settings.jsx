@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { CreditCard, Download, Calendar, CheckCircle, Settings as SettingsIcon, User, Shield, Bell, Phone, MapPin, MessageSquare } from 'lucide-react';
 import { userData, invoices } from '../data/mockData';
 
 const Settings = () => {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('protected-services');
   const [voicemailMessage, setVoicemailMessage] = useState("This number is not accepting calls at the moment. Please contact us by mail at the mailing address on file. Thank you.");
+
+  // Check for tab parameter in URL or state
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const tabParam = urlParams.get('tab');
+    const stateTab = location.state?.tab;
+    
+    if (stateTab) {
+      setActiveTab(stateTab);
+    } else if (tabParam) {
+      setActiveTab(tabParam);
+    }
+  }, [location]);
 
   const tabs = [
     { id: 'protected-services', name: 'Protected Services', icon: Phone },
@@ -23,23 +38,24 @@ const Settings = () => {
         <p className="text-gray-600 dark:text-gray-400 mt-1">Manage your account, billing, and privacy preferences</p>
       </div>
 
-      {/* Tabs */}
+      {/* Tabs - Mobile Optimized */}
       <div className="border-b border-gray-200 dark:border-gray-700">
-        <nav className="-mb-px flex space-x-8">
+        <nav className="-mb-px flex space-x-4 sm:space-x-8 overflow-x-auto scrollbar-hide">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center py-2 px-1 border-b-2 font-medium text-sm ${
+                className={`flex items-center py-2 px-2 sm:px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'border-primary-500 text-primary-600 dark:text-primary-400'
                     : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
                 }`}
               >
-                <Icon className="h-4 w-4 mr-2" />
-                {tab.name}
+                <Icon className="h-4 w-4 mr-2 flex-shrink-0" />
+                <span className="hidden sm:inline">{tab.name}</span>
+                <span className="sm:hidden">{tab.name.split(' ')[0]}</span>
               </button>
             );
           })}
@@ -161,7 +177,7 @@ const Settings = () => {
             </div>
 
             <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
                 <div>
                   <h4 className="font-medium text-gray-900 dark:text-white">Plan Features</h4>
                   <ul className="mt-2 text-sm text-gray-600 dark:text-gray-400 space-y-1">
@@ -172,7 +188,7 @@ const Settings = () => {
                     <li>• Advanced reporting and analytics</li>
                   </ul>
                 </div>
-                <div className="flex flex-col space-y-2">
+                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                   <button className="btn-primary">Upgrade Plan</button>
                   <button className="btn-secondary">Cancel Subscription</button>
                 </div>

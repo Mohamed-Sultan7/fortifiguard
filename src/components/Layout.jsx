@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, Outlet } from 'react-router-dom';
+import { Link, useLocation, useNavigate, Outlet } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   Phone, 
@@ -22,6 +22,7 @@ import { userData, recentCalls, recentMail, stats } from '../data/mockData';
 
 const Layout = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -32,6 +33,7 @@ const Layout = () => {
     { name: 'Calls', href: '/calls', icon: Phone, current: location.pathname === '/calls' },
     { name: 'Mail', href: '/mail', icon: Mail, current: location.pathname === '/mail' },
     { name: 'Settings', href: '/settings', icon: Settings, current: location.pathname === '/settings' },
+    { name: 'Support', href: '/support', icon: HelpCircle, current: location.pathname === '/support' },
   ];
 
   const breadcrumbs = {
@@ -39,6 +41,7 @@ const Layout = () => {
     '/calls': [{ name: 'Dashboard', href: '/dashboard' }, { name: 'Calls', href: '/calls' }],
     '/mail': [{ name: 'Dashboard', href: '/dashboard' }, { name: 'Mail', href: '/mail' }],
     '/settings': [{ name: 'Dashboard', href: '/dashboard' }, { name: 'Settings', href: '/settings' }],
+    '/support': [{ name: 'Dashboard', href: '/dashboard' }, { name: 'Support', href: '/support' }],
   };
 
   const currentBreadcrumbs = breadcrumbs[location.pathname] || [];
@@ -61,6 +64,7 @@ const Layout = () => {
       '/calls': 'Call Management',
       '/mail': 'Mail Center',
       '/settings': 'Account Settings',
+      '/support': 'Help & Support',
     };
     return titles[location.pathname] || 'FortifiGuard';
   };
@@ -121,16 +125,22 @@ const Layout = () => {
 
         {/* User Profile Section */}
         <div className="p-4 border-t border-gray-200/60 dark:border-gray-700/60">
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-gray-50 to-gray-100/50 dark:from-gray-800 dark:to-gray-700/50">
+          <button 
+            onClick={() => {
+              navigate('/settings', { state: { tab: 'profile' } });
+              setSidebarOpen(false); // Close sidebar on mobile after navigation
+            }}
+            className="w-full flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-gray-50 to-gray-100/50 dark:from-gray-800 dark:to-gray-700/50 hover:from-gray-100 hover:to-gray-200/50 dark:hover:from-gray-700 dark:hover:to-gray-600/50 transition-all duration-200 cursor-pointer"
+          >
             <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center text-white font-semibold shadow-soft">
               {userData.name.split(' ').map(n => n[0]).join('').toUpperCase()}
             </div>
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 text-start">
               <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">{userData.name}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400 truncate">Premium Plan</p>
             </div>
             <div className="w-3 h-3 bg-success-500 rounded-full border-2 border-white shadow-sm animate-pulse-soft" />
-          </div>
+          </button>
         </div>
       </div>
 
@@ -251,8 +261,8 @@ const Layout = () => {
             <button 
               onClick={() => {
                 setUserMenuOpen(false);
-                // Navigate to profile/settings page
-                window.location.href = '/settings';
+                // Navigate to profile/settings page with profile tab
+                navigate('/settings', { state: { tab: 'profile' } });
               }}
               className="flex items-center gap-3 w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             >
@@ -262,8 +272,7 @@ const Layout = () => {
             <button 
               onClick={() => {
                 setUserMenuOpen(false);
-                // Show help modal or navigate to help page
-                alert('Help & Support - Feature coming soon!');
+                navigate('/support');
               }}
               className="flex items-center gap-3 w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             >

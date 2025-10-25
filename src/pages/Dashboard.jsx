@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Phone, 
   Mail, 
@@ -23,6 +24,7 @@ import {
 import { userData, recentCalls, recentMail, stats } from '../data/mockData';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [timeRange, setTimeRange] = useState('7d');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -388,7 +390,10 @@ const Dashboard = () => {
           <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Calls</h3>
-              <button className="text-sm text-primary-600 hover:text-primary-700 font-semibold">
+              <button 
+                onClick={() => navigate('/calls')}
+                className="text-sm text-primary-600 hover:text-primary-700 font-semibold"
+              >
                 View All Calls
               </button>
             </div>
@@ -439,7 +444,10 @@ const Dashboard = () => {
           <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Mail</h3>
-              <button className="text-sm text-primary-600 hover:text-primary-700 font-semibold">
+              <button 
+                onClick={() => navigate('/mail')}
+                className="text-sm text-primary-600 hover:text-primary-700 font-semibold"
+              >
                 View All Mail
               </button>
             </div>

@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import Calls from './pages/Calls';
 import MailPage from './pages/Mail';
 import Settings from './pages/Settings';
+import Support from './pages/Support';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="calls" element={<Calls />} />
           <Route path="mail" element={<MailPage />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="support" element={<Support />} />
         </Route>
       </Routes>
     </Router>
