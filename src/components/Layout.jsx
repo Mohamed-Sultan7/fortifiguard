@@ -67,7 +67,7 @@ const Layout = () => {
       '/settings': 'Account Settings',
       '/support': 'Help & Support',
     };
-    return titles[location.pathname] || 'FortifiGuard';
+    return titles[location.pathname] || 'Debt Detector';
   };
 
   return (
@@ -89,7 +89,7 @@ const Layout = () => {
               <Shield className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gradient">FortifiGuard</h1>
+              <h1 className="text-xl font-bold text-gradient">Debt Detector</h1>
               <p className="text-xs text-gray-500 dark:text-gray-400">Protected Services</p>
             </div>
           </div>

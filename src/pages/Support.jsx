@@ -63,7 +63,7 @@ const Support = () => {
     },
     {
       title: 'Download User Guide',
-      description: 'Complete guide to using FortifiGuard',
+      description: 'Complete guide to using Debt Detector',
       icon: FileText,
       action: () => window.open('#', '_blank')
     },
@@ -113,7 +113,7 @@ const Support = () => {
             How can we help you?
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Get support for your FortifiGuard services. We're here to help with any questions or issues you may have.
+            Get support for your Debt Detector services. We're here to help with any questions or issues you may have.
           </p>
         </div>
 
@@ -282,7 +282,7 @@ const Support = () => {
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">Phone Support</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">1-800-FORTIFI (24/7)</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">1-800-DebtDetector (24/7)</div>
                   </div>
                 </div>
                 
@@ -292,7 +292,7 @@ const Support = () => {
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">Email Support</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">support@fortifiguard.com</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">support@Debt Detector.com</div>
                   </div>
                 </div>
                 

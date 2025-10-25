@@ -46,10 +46,10 @@ const Login = () => {
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       // Mock authentication - in real app, validate with backend
-      if (formData.email === 'demo@fortifiguard.com' && formData.password === 'demo123') {
+      if (formData.email === 'demo@Debt Detector.com' && formData.password === 'demo123') {
         navigate('/dashboard');
       } else {
-        setErrors({ general: 'Invalid email or password. Try demo@fortifiguard.com / demo123' });
+        setErrors({ general: 'Invalid email or password. Try demo@Debt Detector.com / demo123' });
       }
     } catch (error) {
       setErrors({ general: 'An error occurred. Please try again.' });
@@ -84,7 +84,7 @@ const Login = () => {
               <Shield className="h-8 w-8 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">FortifiGuard</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Debt Detector</h1>
           <p className="text-lg text-gray-600 font-medium">
             Silence the noise. Take back your peace.
           </p>
@@ -196,7 +196,7 @@ const Login = () => {
                   <span>Signing in...</span>
                 </div>
               ) : (
-                'Sign in to FortifiGuard'
+                'Sign in to Debt Detector'
               )}
             </button>
           </form>

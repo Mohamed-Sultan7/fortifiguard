@@ -1,11 +1,11 @@
-// Mock data for FortifiGuard application
+// Mock data for Debt Detector application
 
 export const userData = {
-  name: "Creek Faughster",
-  email: "creek.faughster@gmail.com",
+  name: "John Doe",
+  email: "john.doe@gmail.com",
   assignedPhone: "+1 (555) 123-4567",
   assignedAddress: {
-    name: "Creek Faughster",
+    name: "John Doe",
     street: "1234 Protected Mail Center",
     suite: "Suite #VM789",
     city: "Privacy City",
